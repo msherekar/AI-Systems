@@ -1,0 +1,47 @@
+# ReinforcementLearning Configuration
+
+# Data paths
+data:
+  raw_dir: 'data/raw'
+  processed_dir: 'data/processed'
+  userbase_file: 'data/raw/userbase.csv'
+  sent_emails_file: 'data/raw/sent_emails.csv'
+  responded_emails_file: 'data/raw/responded_emails.csv'
+  processed_file: 'data/processed/merged_data.csv'
+
+# Model configuration
+model:
+  # Q-learning parameters
+  learning_rate: 0.1
+  discount_factor: 0.9
+  epsilon: 0.1
+  state_size: 1000
+  
+  # File paths
+  output_dir: 'models'
+  model_file: 'models/q_table.pkl'
+
+# Training configuration
+training:
+  episodes: 1000
+  metrics_dir: '.'
+  logs_dir: 'logs'
+  save_interval: 100  # Save model every N episodes
+
+# API configuration
+api:
+  host: '0.0.0.0'
+  port: 5000
+  debug: false
+  subject_lines:
+    - 'Exclusive Offer'
+    - 'Limited Time Deal'
+    - 'New Products Available'
+    - 'Special Discount'
+    - 'Invitation to VIP Event'
+
+# Logging configuration
+logging:
+  level: 'INFO'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: 'logs/app.log' 

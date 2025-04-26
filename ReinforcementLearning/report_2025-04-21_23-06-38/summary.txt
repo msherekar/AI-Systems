@@ -1,0 +1,23 @@
+# Training Report
+
+Generated: 2025-04-21 23:06:38
+
+## Training Parameters
+
+- Learning Rate: 0.1
+- Discount Factor: 0.9
+- Epsilon: 0.1
+
+## Training Results
+
+- Training Time: 332.51 seconds
+- Episodes to Convergence: 1
+- Initial Average Reward: 0.0820
+- Final Average Reward: 0.0820
+- Reward Improvement: 0.00%
+
+## Generated Figures
+
+- [Cumulative Rewards](cumulative_rewards.png)
+- [Average Reward](average_reward.png)
+- [Discounted Rewards](discounted_rewards.png)
