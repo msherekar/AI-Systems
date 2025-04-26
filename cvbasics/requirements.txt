@@ -1,0 +1,8 @@
+opencv-python
+numpy
+os
+json
+IMAGE
+Flask
+request
+os
