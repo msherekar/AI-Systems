@@ -1,0 +1,40 @@
+# config/config.yaml
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  train_file: "train_dataset.csv"
+  val_file: "val_dataset.csv"
+  
+preprocessing:
+  night_start_hour: 22
+  night_end_hour: 4
+  
+dataset:
+  k_folds: 5
+  random_state: 42
+  balance_samples: 1000
+  
+models:
+  random_forest:
+    n_estimators: 100
+    random_state: 42
+    use_pca: true
+    pca_components: 0.95
+  
+  logistic_regression:
+    class_weight: "balanced"
+    use_pca: true
+    pca_components: 0.95
+    
+  ensemble:
+    use_pca: true
+    pca_components: 0.95
+    max_depth: 7
+    min_samples_leaf: 10
+    random_state: 42
+    
+api:
+  host: "0.0.0.0"
+  port: 8786
+  debug: true
+  default_model: "random_forest"
