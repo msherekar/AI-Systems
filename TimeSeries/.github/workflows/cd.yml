@@ -1,0 +1,53 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: 'arm64,amd64'
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/timeseries-forecasting:latest,${{ secrets.DOCKER_HUB_USERNAME }}/timeseries-forecasting:${{ github.ref_name }}
+    
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to production
+      # This is a placeholder for your actual deployment steps
+      # Replace with your actual deployment commands
+      run: |
+        echo "Deploying version ${{ github.ref_name }} to production"
+        # Examples:
+        # - SSH into your server and pull the Docker image
+        # - Update a Kubernetes deployment
+        # - Deploy to a cloud service like AWS ECS or Google Cloud Run 

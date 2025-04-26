@@ -1,0 +1,39 @@
+# Configuration parameters for the TimeSeries project 
+
+# Data paths
+data:
+  raw_data_path: "data/raw/credit_card_data.csv"
+  processed_data_path: "data/processed/processed_data.csv"
+
+# Model parameters
+models:
+  sarimax:
+    total:
+      order: [1, 1, 1]
+      seasonal_order: [1, 1, 1, 12]
+    fraud:
+      order: [1, 1, 1]
+      seasonal_order: [1, 1, 1, 12]
+  lstm:
+    total:
+      input_size: 1
+      hidden_size: 50
+      num_layers: 1
+      epochs: 30
+      batch_size: 32
+    fraud:
+      input_size: 1
+      hidden_size: 50
+      num_layers: 1
+      epochs: 30
+      batch_size: 32
+
+# Training parameters
+training:
+  train_test_split: 0.8
+  random_state: 42
+
+# API settings
+api:
+  host: "0.0.0.0"
+  port: 80 
