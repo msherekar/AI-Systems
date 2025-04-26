@@ -1,0 +1,93 @@
+# ==========================================
+# General
+# ==========================================
+.DS_Store
+*.log
+*.tmp
+*.bak
+
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment folders
+.env/
+.venv/
+env/
+venv/
+
+# ==========================================
+# Jupyter Notebooks
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# Machine Learning / Deep Learning Artifacts
+# ==========================================
+*.h5
+*.hdf5
+*.ckpt
+*.pth
+*.pt
+*.pkl
+*.pickle
+*.joblib
+*.npz
+*.npy
+
+# ==========================================
+# Data Files
+# ==========================================
+*.csv
+*.tsv
+*.json
+*.jsonl
+*.xlsx
+*.xls
+*.feather
+*.parquet
+
+# ==========================================
+# Model Weights and Checkpoints (folder-based)
+models/
+checkpoints/
+runs/  # For tensorboard logs if you use it
+
+# ==========================================
+# Build / Dist Folders (if packaging)
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# IDEs and Editors
+# ==========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================================
+# Docker
+# ==========================================
+*.dockerfile
+docker-compose.yml
+
+# ==========================================
+# Miscellaneous
+# ==========================================
+*.swp
+*.swo
+*.orig
+*.mov
+*.mp4
+*.avi
+*.mkv
+*.webm
+*.gif
+*.jpg
+*.jpeg
