@@ -1,0 +1,47 @@
+# ALPR System Configuration
+
+# Video processing settings
+video:
+  width: 3840
+  height: 2160
+  input_url: 'udp://127.0.0.1:23002'
+
+# Model settings
+model:
+  yolo:
+    weights_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/weights/lpr-yolov3.weights'
+    config_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/configs/lpr-yolov3.cfg'
+    names_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/configs/coco.names'
+    # weights_path: '../models/weights/lpr-yolov3-tiny.weights'
+    # config_path: '../models/configs/lpr-yolov3-tiny.cfg'
+    # names_path: '../models/configs/coco.names'
+    confidence_threshold: 0.9
+    nms_threshold: 0.2
+  
+  yolo_tiny:
+    weights_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/weights/lpr-yolov3-tiny.weights'
+    config_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/configs/lpr-yolov3-tiny.cfg'
+    names_path: '/Users/mukulsherekar/Documents/Creating_AI_Enabled_Systems/ALPR_new/models/configs/coco.names'
+    # weights_path: '../models/weights/lpr-yolov3-tiny.weights'
+    # config_path: '../models/configs/lpr-yolov3-tiny.cfg'
+    # names_path: '../models/configs/coco.names'
+    confidence_threshold: 0.9
+    nms_threshold: 0.2
+
+# Detection parameters
+detection:
+  bbox_scale_factor: 1.5  # Scale factor to increase bounding box size
+
+# OCR settings
+ocr:
+  lang: 'eng'
+  valid_length: 7
+  
+# API settings
+api:
+  host: '0.0.0.0'
+  port: 8080
+
+# Output settings
+output:
+  results_file: 'results.txt'

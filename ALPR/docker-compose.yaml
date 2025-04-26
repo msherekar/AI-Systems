@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  alpr-stream:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alpr-system:latest
+    container_name: alpr-stream
+    command: ["--mode", "stream"]
+    ports:
+      - "23002:23002/udp"
+    volumes:
+      - ./results:/app/results
+    restart: unless-stopped
+    networks:
+      - alpr-network
+
+  alpr-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alpr-system:latest
+    container_name: alpr-api
+    command: ["--mode", "api", "--host", "0.0.0.0", "--port", "8080"]
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./results:/app/results
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - alpr-network
+
+networks:
+  alpr-network:
+    driver: bridge
